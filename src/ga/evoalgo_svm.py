@@ -69,7 +69,7 @@ class EvoAlgo:
             Array of floats.
 
         """
-        return np.reshape(np.random.sample((self.n_params, )), (-1, self.n_params))
+        return np.reshape(100*np.random.sample((self.n_params, )), (-1, self.n_params))
 
     def _create_population(self):
         """Return new population.
@@ -255,12 +255,19 @@ class EvoAlgo:
             ind : string, 'best'
                 Determines which set of params print.
 
+        Returns:
+            C : float
+                Penalty parameter C of the error term.
+            
+            gamma: float
+                Kernel coefficient for ‘rbf’.
         """
         if ind == 'best':
             print('Best params:')
             print('C: {}'.format(self._best_score.params[0]))
             print('Gamma: {}'.format(self._best_score.params[1]))
             print('neg_log_loss: {}\n'.format(self._best_score.score))
+            return self._best_score.params[0], self._best_score.params[1]
         else:
             print("Proper call should be: .get_params() or .get_params(ind='best')")
 
