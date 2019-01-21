@@ -69,7 +69,7 @@ class EvoAlgo:
             Array of floats.
 
         """
-        return np.reshape(100*np.random.sample((self.n_params, )), (-1, self.n_params))
+        return np.reshape(np.random.sample((self.n_params, )), (-1, self.n_params))
 
     def _create_population(self):
         """Return new population.
@@ -280,7 +280,7 @@ class EvoAlgo:
         plt.plot([0, len(mean_score)], [self._base_score, self._base_score], 'b--', lw=2, label='wynik bazowy')
         plt.plot(range(len(mean_score)), mean_score, 'k', label='wynik sredni generacji')
         plt.plot(range(len(best_score)), best_score, 'g', label='wynik najlepszego osobnika')
-        plt.xlabel('przewidywane prawdopodobienstwo')
+        plt.xlabel('generacja')
         plt.ylabel('- log loss')
         plt.legend(loc=0)
         plt.show()
